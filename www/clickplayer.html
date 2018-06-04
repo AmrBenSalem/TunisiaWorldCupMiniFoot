@@ -1,0 +1,114 @@
+							<ons-page>
+                                <!-- <ons-toolbar style="z-index: 0;">
+                                  <div class="toolbarplayers left">
+                                    <i class="ion-chevron-left" style="text-align:center" onclick="myNavigator.bringPageTop('clickteam.html')"></i>
+                                  </div>
+                                  <div class="titlepage2 center"></div>
+                                  <div class="righttoolbarplayers right toolbar__right toolbar--material__right"></div>
+                                </ons-toolbar> -->
+                                    <ons-toolbar>
+								      <div class="left"><ons-back-button></ons-back-button></div>
+								      <div id="titleplayer" class="center"></div>
+								    </ons-toolbar>
+
+
+
+          <div id="playerinfocontent" style="height: 100%">  
+								<!-- <ons-row class="firstrowplayer">
+								  	<ons-col class="centerTextAlign">
+								  		<img class="resizeimgplayer" src="img/flags/tunisia_round_icon_256.png">
+								  	</ons-col>
+								</ons-row>
+
+
+								<ons-row  class="tablerow">
+								  	<ons-col class="bordercol">
+								  		<div class="centertitle">Number</div>
+								  		<span class="centeredvalue">5</span>
+								  	</ons-col>
+								  	<ons-col class="bordercol">
+								  		<div class="centertitle">Goals</div>
+								  		<span class="centeredvalue">5</span>
+									</ons-col>
+									<ons-col class="bordercol">
+								  		<div class="centertitle">Matchs</div>
+								  		<span class="centeredvalue">5</span>
+								  	</ons-col >
+								  	<ons-col class="bordercol">
+								  		<div class="centertitle">Position</div>
+								  		<span class="centeredvalue">Attacker</span>
+									</ons-col>
+								</ons-row>
+
+
+
+      <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Birth date </div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div></div>                 
+                        </div>
+                      </li>
+      </ul>
+
+          <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Weight (kg)</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div></div>                 
+                        </div>
+                      </li>
+      </ul>
+      <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Height (cm)</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div></div>                 
+                        </div>
+                      </li>
+      </ul> -->
+    </div>
+
+                                <script type="text/javascript">
+                                	
+                                  document.addEventListener("backbutton", onBackKeyDown, false);
+
+                                  function onBackKeyDown() {
+                                      myNavigator2.popPage();
+                                  }
+                                  var modal = document.querySelector('ons-modal');
+                                  modal.show();
+                                      var storage = window.localStorage;
+                                      var value = storage.getItem('actualplayer');
+                                      // storage.removeItem('actualplayer');
+                                      
+
+                                      $.ajax({
+                                      type: "POST",
+                                      url: 'http://tunisia2017.com/phpapp/getplayerinfo.php',
+                                      data : {dt : value}
+                                      }).done(function( msg ) {
+                                        // console.log(msg);
+                                        $('#playerinfocontent').html(msg);
+                                      });
+
+                                      $.ajax({
+                                      type: "POST",
+                                      url: 'http://tunisia2017.com/phpapp/getplayername.php',
+                                      data : {dt : value}
+                                      }).done(function( msg ) {
+                                        $('#titleplayer').html(msg);
+                                        modal.hide();
+                                      });
+
+                                </script>
+                              </ons-page>

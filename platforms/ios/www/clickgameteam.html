@@ -1,0 +1,118 @@
+            <ons-page>                
+                    <ons-toolbar>
+                      <div class="left"><ons-back-button>B</ons-back-button></div>
+                      <div id="titleDetailsGame2" class="center">Details</div>
+                      <div class="right" style="visibility: hidden;">----</div>
+                    </ons-toolbar>
+
+            <div id="clickedmatchcontent2">
+                <!-- <ul class="list list--inset">
+                      <li class="list-item list--inset__item livematch">
+                        <div class="list-item__left"> 
+                            <div class="team-right">Tunisia</div>
+                            <img class="list-item__thumbnail resizeimg" src="img/flags/tunisia_round_icon_256.png">               
+                        </div>
+
+                        <div class="list-item__center text-date backgroundimgnone">
+                            <div class="score">1 - 0</div>
+                            <div class="livetime">00:20</div>
+
+                        </div>
+
+                        <div class="list-item__right backgroundimgnone">
+                            <img class="list-item__thumbnail resizeimg" src="img/flags/australia_round_icon_256.png">
+                            <div class="team-left">Australia</div>                 
+                        </div>
+                      </li>
+                </ul> -->
+            
+
+               <!-- <ul class="list list--inset">
+                      <li class="list-header list-header--material mitemps">
+                        1st Half
+                      </li>
+                </ul>
+
+                <ul class="list noline">
+                    <li class="list-item list-item--nodivider noline paddinglist">
+                        <div class="list-item__right overrideright noline">
+                            <img class="resizeimgcard" src="img/live/yellow_card.png">
+                            <div class="divLive">Anas ben SALEM aaaaa</div>
+                            <div class="divTimeRight">20:10</div>              
+                        </div>
+                      </li>
+                      <li class="list-item list-item--nodivider noline paddinglist">
+                        <div class="list-item__left overrideleft noline"> 
+                            <div class="divTime">30:15</div> 
+                            <div class="firstimg divLiveFirst">MohamedAliii BENSALEM</div>
+                            <img class="firstimg resizeimgcard" src="img/live/red_card.png">              
+                        </div>
+                    </li>
+                    
+
+
+                </ul>
+
+                <ul class="list list--inset">
+                      <li class="list-header list-header--material mitemps">
+                        2st Half
+                      </li>
+                </ul>
+
+
+                <ul class="list noline">
+                    <li class="list-item list-item--nodivider noline paddinglist">
+                        <div class="list-item__right overrideright noline">
+                            <img class="resizeimgcard" src="img/live/yellow_card.png">
+                            <div class="divLive">Anas ben SALEM aaaaa</div>
+                            <div class="divTimeRight">20:10</div>              
+                        </div>
+                    </li>
+                    <li class="list-item list-item--nodivider noline paddinglist">
+                        <div class="list-item__left overrideleft noline"> 
+                            <div class="divTime">30:15</div> 
+                            <div class="firstimg divLiveFirst">MohamedAliii BENSALEM</div>
+                            <img class="firstimg resizeimgcard" src="img/live/yellow-red_card.png">              
+                        </div>
+                    </li>
+                    <li class="list-item list-item--nodivider noline paddinglist goalscored">
+                        <div class="list-item__right overrideright noline">
+                            <img class="resizeimgcard" src="img/live/ball.png">
+                            <div class="divLive">Anas ben SALEM aaaaa</div>
+                            <div class="divTimeRight">20:10</div>              
+                        </div>
+                    </li>
+                    
+
+                </ul> -->
+
+                </div>
+
+
+
+                <script type="text/javascript">
+
+
+                    document.addEventListener("backbutton", onBackKeyDown, false);
+
+                                  function onBackKeyDown() {
+                                      myNavigator2.popPage();
+                                  }
+                            var modal = document.querySelector('ons-modal');
+                            modal.show();
+
+                            var storage = window.localStorage;
+                            var val=storage.getItem('clickedgameteam');
+                            $.ajax({
+                              type: "POST",
+                              url: 'http://tunisia2017.com/phpapp/getmatch.php',
+                              data : {dt : val}
+                              }).done(function( msg ) {
+                                  // $('#titleOfTeam').html(val);
+                                  // console.log(msg);
+                                  $('#clickedmatchcontent2').html(msg);
+                                  modal.hide();
+                            });
+                  
+                </script>
+            </ons-page>

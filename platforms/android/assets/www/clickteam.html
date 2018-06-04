@@ -1,0 +1,127 @@
+  <ons-page id="page9">
+
+  <ons-navigator swipeable id="myNavigator2" page="clickteamss.html"></ons-navigator>
+
+
+  <template id="clickteamss.html">
+  <ons-page id="clickteams">
+    <ons-toolbar>
+      
+      <div class="left">
+          <div onclick="myNavigator.popPage();" modifier="material" class="back-button--material back-button" ripple=""><ons-ripple modifier="material" class="ripple--material ripple" center="" size="contain" background="transparent"><div class="ripple__wave ripple--material__wave"></div><div class="ripple__background ripple--material__background" style="background: transparent;"></div></ons-ripple><span class="back-button__icon back-button--material__icon"><svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>md-back-button-icon</title><desc>Created with Sketch.</desc><defs></defs><g id="__1KDQIIe__toolbar-back-button" stroke="none" stroke-width="1" fill-rule="evenodd"><g id="__1KDQIIe__android" transform="translate(-32.000000, -32.000000)" fill-rule="nonzero"><polygon id="__1KDQIIe__md-back-button-icon" points="48 39 35.83 39 41.42 33.41 40 32 32 40 40 48 41.41 46.59 35.83 41 48 41"></polygon></g></g></svg></span><span class="back-button__label back-button--material__label"></span></div>
+      </div>
+
+      <div id="titleOfTeam" class="center"></div>
+
+      <div class="right" style="visibility: hidden;">----</div>
+    </ons-toolbar>
+
+    <ons-row id="rowteam" class="firstrowplayer">
+      <ons-col class="centerTextAlign">
+          <img id="imgteambanner" class="resizeimgteambanner" >
+      </ons-col>
+                   <ons-col id="teamtitleimg" class="centervertical">
+                  </ons-col>
+    </ons-row>
+
+            <ons-tabbar position="auto" swipeable id="tabrs" var="myTabbars" class="tabarcolor" animation="slide" animation-options="{duration: 0.2, delay: 0, timing: 'ease-out'}">
+                <ons-tab page="infoteam.html" label="Info" icon="ion-ios-information-outline" active> </ons-tab>
+                <ons-tab page="listplayers.html" label="Players" icon="ion-ios-people"> </ons-tab>
+                <ons-tab page="teammatchs.html" label="Matchs" icon="ion-navicon"> </ons-tab>
+                <!-- <ons-tab page="ranking.htl" label="Ranking" icon="ion-trophy"> </ons-tab> -->
+            </ons-tabbar>
+
+      
+    </ons-page>
+  </template>
+
+
+
+
+
+  <script type="text/javascript">
+
+    document.addEventListener("backbutton", onBackKeyDown, false);
+
+        function onBackKeyDown() {
+            myNavigator.popPage();
+        }
+
+        var modal = document.querySelector('ons-modal');
+        modal.show();
+    
+    var storage = window.localStorage;
+    var val =storage.getItem('actualteam');
+
+
+
+
+    $.ajax({
+              type: "POST",
+              url: 'http://tunisia2017.com/phpapp/getplayers.php',
+              data : {dt : val}
+              }).done(function( msg ) {
+                
+                $('#titleOfTeam').html(val);
+                $('#teamtitleimg').html(val);
+                $('#playercontent').html(msg);
+                $('#imgteambanner').attr('src','img/flags/'+val+'_round_icon_256.png');
+                
+              });
+
+
+          var storage = window.localStorage;
+          var val =storage.getItem('actualteam');
+          $.ajax({
+              type: "POST",
+              url: 'http://tunisia2017.com/phpapp/getteammatchs.php',
+              data : {dt : val}
+              }).done(function( msg ) {
+                  // $('#titleOfTeam').html(val);
+                  // console.log(msg);
+                  $('#teammatchscontent').html(msg);
+          });
+
+
+
+
+              $.ajax({
+              type: "POST",
+              url: 'http://tunisia2017.com/phpapp/getteaminfo.php',
+              data : {dt : val}
+              }).done(function( msg ) {
+                  // $('#titleOfTeam').html(val);
+                  // console.log(msg);
+                  $('#infocontent').html(msg);
+                  modal.hide();
+          });
+
+
+
+
+              
+
+
+           
+
+
+    function pushplayer(elee) {
+      var page = event.target;
+       var name = elee.id;
+      document.querySelector('#myNavigator2').pushPage('clickplayer.html');
+      var storage = window.localStorage;
+      storage.setItem('actualplayer', elee.id);
+    }
+
+    
+    
+  </script>
+</ons-page>
+
+                          
+
+
+
+
+
+

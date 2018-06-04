@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+		<!-- <link rel="stylesheet" href="OnsenUI-dist-2.5.3/css/onsenui.css">
+		<link rel="stylesheet" href="OnsenUI-dist-2.5.3/css/onsen-css-components.min.css"> -->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="OnsenUI-dist-2.6.0/css/onsenui.css">
+        <link rel="stylesheet" href="OnsenUI-dist-2.6.0/css/onsen-css-components.min.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <!-- <script src="OnsenUI-dist-2.5.3/js/angular.min.js"></script> -->
+        
+
+        <title>Mini Score</title>
+    </head>
+    <body>
+        
+        <ons-page>
+
+            <ons-tabbar swipeable id="tabr" var="myTabbar" class="tabarcolor" animation="slide" animation-options="{duration: 0.2, delay: 0, timing: 'ease-out'}">
+                <ons-tab page="allgames.html" label="All Matchs" icon="ion-navicon-round" active> </ons-tab>
+                <ons-tab page="live.html" label="Live" icon="ion-radio-waves"> </ons-tab>
+                <ons-tab page="teams.html" label="Teams" icon="ion-tshirt"> </ons-tab>
+                <ons-tab page="ranking.html" label="Ranking" icon="ion-trophy"> </ons-tab>
+            </ons-tabbar>
+
+        </ons-page>
+
+
+<ons-modal direction="up">
+  <div style="text-align: center">
+    <p>
+      <ons-icon icon="md-spinner" size="28px" spin></ons-icon> Loading...
+    </p>
+  </div>
+</ons-modal>
+<script src="js/angular.min.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <!-- <script src="OnsenUI-dist-2.5.3/js/onsenui.min.js"></script>        
+        <script src="OnsenUI-dist-2.5.3/js/angular-onsenui.min.js"></script> -->
+        <script src="OnsenUI-dist-2.6.0/js/onsenui.min.js"></script>        
+        <!-- <script src="OnsenUI-dist-2.6.0/js/angular-onsenui.min.js"></script> -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <!-- <script type="text/javascript" src="js/ajax.js"></script> -->
+        <script type="text/javascript"> 
+            ons.platform.select('android');
+            // ons.bootstrap();
+            // alert(myNavigator.getPages());
+        </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<ons-page id="teammatchs">
+
+    <div id="teammatchscontent">
+<!--                                 <ul class="list list--inset">
+                                      <li id="drogba" class="list-item list--inset__item list-item--tappable list-item--longdivider" onclick="pushplayer(this);">
+                                        <div class="list-item__left webkitbox"> 
+                                            <img class="list-item__thumbnail resizeimgteam" src="img/flags/tunisia_round_icon_256.png">  
+                                            <div class="team-left">Drogba</div>              
+                                        </div>
+
+                                      </li>
+                                </ul>
+                                fdss -->
+    </div>
+
+
+
+    <script type="text/javascript">
+
+
+
+
+
+          var modal = document.querySelector('ons-modal');
+          modal.show();
+
+          var storage = window.localStorage;
+          var val =storage.getItem('actualteam');
+          $.ajax({
+              type: "POST",
+              url: 'http://tunisia2017.com/phpapp/getteammatchs.php',
+              data : {dt : val}
+              }).done(function( msg ) {
+                  // $('#titleOfTeam').html(val);
+                  // console.log(msg);
+                  $('#teammatchscontent').html(msg);
+                  modal.hide();
+          });
+
+
+      function pushgame2(ele4) {
+
+      document.querySelector('#myNavigator2').pushPage('clickgameteam.html');
+      var storage = window.localStorage;
+      storage.setItem('clickedgameteam', ele4.id);
+    }
+    </script>
+</ons-page>

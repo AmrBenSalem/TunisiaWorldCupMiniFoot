@@ -1,0 +1,53 @@
+<ons-page id="tab6">
+            
+                 <!-- <ons-navigator title="Navigator" var="myNavigator" style="background-color: white;"> </ons-navigator> -->
+                    
+<ons-navigator swipeable id="myNavigator" page="teamss.html"></ons-navigator>
+
+
+<template id="teamss.html">
+  <ons-page id="teams">
+    <ons-toolbar>
+        <div class="center">Teams</div>
+    </ons-toolbar>
+
+    <div id="teamcontent">
+          LOADING
+    </div>
+
+  </ons-page>
+</template>
+            
+
+    <script type="text/javascript">
+        
+
+
+        // var modal = document.querySelector('ons-modal');
+        // modal.show();
+        // $.ajax({
+        //       type: "POST",
+        //       url: 'http://tunisia2017.com/phpapp/getteams.php',
+        //       }).done(function( msg ) {
+        //           $('#teamcontent').html(msg);
+        //           modal.hide();
+        //       });
+
+
+      function pushh(ele) {
+            var page = event.target;
+             var name = ele.id;
+            document.querySelector('#myNavigator').pushPage('clickteam.html', {data: {title: name}});
+            var storage = window.localStorage;
+            storage.setItem('actualteam', ele.id);
+          }
+
+            
+        
+
+
+
+    </script>
+
+
+            </ons-page>

@@ -1,0 +1,107 @@
+<ons-page id="listplayers">
+    <div id="infocontent">
+
+
+     <!--  <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Group</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div>A</div>                 
+                        </div>
+                      </li>
+      </ul>
+
+          <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Wins</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div>3</div>                 
+                        </div>
+                      </li>
+      </ul>
+      <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Draws</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div>1</div>                 
+                        </div>
+                      </li>
+      </ul>
+      <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Losses</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div>1</div>                 
+                        </div>
+                      </li>
+      </ul>
+      <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Goals</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div>+15/-5</div>                 
+                        </div>
+                      </li>
+      </ul>
+      <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Points</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div>1</div>                 
+                        </div>
+                      </li>
+      </ul>
+      <ul class="list list--inset">
+                      <li class="list-item list--inset__item">
+                        <div class="list-item__left overrided"> 
+                            <div>Rank</div>               
+                        </div>
+
+                        <div class="list-item__right overrided">
+                            <div>1</div>                 
+                        </div>
+                      </li>
+      </ul> -->
+    </div>
+
+
+
+    <script type="text/javascript">
+      
+          var modal = document.querySelector('ons-modal');
+          modal.show();
+
+          var storage = window.localStorage;
+          var val =storage.getItem('actualteam');
+          $.ajax({
+              type: "POST",
+              url: 'http://tunisia2017.com/phpapp/getteaminfo.php',
+              data : {dt : val}
+              }).done(function( msg ) {
+                  // $('#titleOfTeam').html(val);
+                  // console.log(msg);
+                  $('#infocontent').html(msg);
+                  modal.hide();
+          });
+
+          
+    </script>
+</ons-page>
